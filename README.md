@@ -9,7 +9,7 @@ After you have setup and started your mySQL database, connect to it using your r
 1. `SHOW DATABASES;` (your should not see any databases other than the default ones)
 2. `CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';`
 3. `CREATE DATABASE cpsc_304;`
-4. `GRANT ALL PRIVILEGES ON cpsc_304.* TO 'user'@'localhost';`
+4. `GRANT ALL PRIVILEGES ON cpsc_304.* TO 'admin'@'localhost';`
 5. `SHOW DATABASES;` (cpsc_304 should now be listed)
 6. `use cpsc_304;` (connect to the cpsc_304 database)
 7. `SHOW TABLES;` (should be empty)
