@@ -1,12 +1,14 @@
 import { Router, Request, Response } from 'express';
-import { initializeDatabase } from '../database/init';
+import { createTables } from '../database/init';
+import { populateTables } from '../database/populate';
 import { resetDatabase } from '../database/reset';
 
 export const router = Router();
 
 router.post('/init', async (req: Request, res: Response) => {
 	try {
-		await initializeDatabase();
+		await createTables();
+		await populateTables();
 		res.sendStatus(200);
 	} catch (err) {
 		res.status(400);
