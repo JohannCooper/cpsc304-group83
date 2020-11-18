@@ -3,7 +3,7 @@ import { queryDatabase } from '../database';
 
 export const router = Router();
 
-router.get('/meeting', async (req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
 	try {
 		const results = await queryDatabase(`
 			SELECT *
@@ -17,7 +17,7 @@ router.get('/meeting', async (req: Request, res: Response) => {
 	}
 });
 
-router.post('/meeting', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
 	try {
 		const { date, location, purpose, organizer } = req.body;
 
@@ -33,7 +33,7 @@ router.post('/meeting', async (req: Request, res: Response) => {
 	}
 });
 
-router.put('/meeting/:olddate/:oldlocation', async (req: Request, res: Response) => {
+router.put('/:olddate/:oldlocation', async (req: Request, res: Response) => {
 	try {
 		const { olddate: olddate, oldlocation: oldlocation } = req.params;
 		const { date, location } = req.body;
@@ -52,7 +52,7 @@ router.put('/meeting/:olddate/:oldlocation', async (req: Request, res: Response)
 	}
 });
 
-router.delete('/meeting/:date/:location', async (req: Request, res: Response) => {
+router.delete('/:date/:location', async (req: Request, res: Response) => {
 	try {
 		const { date: date, location: location } = req.params;
 

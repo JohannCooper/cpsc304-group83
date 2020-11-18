@@ -3,7 +3,7 @@ import { queryDatabase } from '../database';
 
 export const router = Router();
 
-router.get('/tripmeeting/:tripID', async (req: Request, res: Response) => {
+router.get('/:tripID', async (req: Request, res: Response) => {
 	try {
 		const { tripID: id } = req.params;
 
