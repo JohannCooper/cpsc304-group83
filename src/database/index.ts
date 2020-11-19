@@ -21,7 +21,7 @@ export const middleware = (req: Request, res: Response, next: NextFunction) => {
 
 	  isConnected = true;
 	  console.log('Database connection established\n');
-
+		
 	  next();
 	});
 };

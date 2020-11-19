@@ -38,8 +38,6 @@ export async function populateTables() {
 			( '2021-05-10 18:30:00', 'EOSC 2011', 'Son of Rock Meeting!', '4' ),
 
 			( '2020-09-21 19:00:00', 'Blue Chip', 'Planning our trip to Mount Fromme', '3' ),
-			( '2020-10-01 19:00:00', 'Hennings', 'Best trip videos and photos of the past year', '4' ),
-			( '2020-02-14 19:00:00', 'The Aviary', 'Teach people climbing terminology', '3' ),
 			( '2020-05-03 19:00:00', 'VOC Office', 'How to rent equipment for dummies', '2' );	
 	`);
 
@@ -64,7 +62,8 @@ export async function populateTables() {
 			('3', '4'),
 			('4', '4'),
 			('5', '4'),
-			('3', '3');
+			('3', '3'),
+			('1', '3');
 	`);
 
 	console.log("Table populated: 'attends_trip'");
@@ -98,7 +97,17 @@ export async function populateTables() {
 			('4', '2020-11-17 19:00:00', '2'),
 			('5', '2020-11-17 19:00:00', '2'),
 
-			('3', '2021-05-10 18:30:00', '4');
+			('1', '2020-08-09 17:00:00', '3'),
+
+			('3', '2021-05-10 18:30:00', '4'),
+			('1', '2021-05-10 18:30:00', '4'),
+
+			('1', '2020-09-21 19:00:00', '3' ),
+
+			('1', '2020-05-03 19:00:00', '2' );	
+
+
+
 	`);
 
 	console.log("Table populated: 'attends_meeting'");
