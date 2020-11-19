@@ -38,7 +38,6 @@ router.put('/:olddate/:oldlocation', async (req: Request, res: Response) => {
 		const { olddate: olddate, oldlocation: oldlocation } = req.params;
 		const { date, location } = req.body;
 
-		// TODO: Why is 'date' a keyword?
 		await queryDatabase(`
 			UPDATE meeting m
 			SET m.date = '${date}', location = '${location}' 

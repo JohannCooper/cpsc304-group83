@@ -24,16 +24,3 @@ router.get('/:tripID', async (req: Request, res: Response) => {
 		res.json({ error: err });
 	}
 });
-
-/**
-WITH Temp(full_name, tripCount) AS
-	SELECT m.full_name, COUNT(*)
-	FROM member m, attends_trip attendT
-	WHERE m.member_id = attendT.member_id AND m.member_ID IN (SELECT member_ID
-															  FROM attends_trip at2
-															  WHERE at2.trip_id = id)
-	GROUP BY m.member_id
-SELECT t.full_name, t.tripCount
-FROM Temp t
-WHERE t.tripCount = (SELECT MAX(Temp.tripCount) FROM Temp;
-*/
