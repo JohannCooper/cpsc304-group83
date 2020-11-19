@@ -3,6 +3,20 @@ import { queryDatabase } from '../database';
 
 export const router = Router();
 
+router.get('/', async (req: Request, res: Response) => {
+	try {
+		const results = await queryDatabase(`
+			SELECT *
+			FROM trips;
+		`);
+
+		res.json({ data: results });
+	} catch (err) {
+		res.status(400);
+		res.json({ error: err });
+	}
+});
+
 router.get('/attendance', async (req: Request, res: Response) => {
 	try {
 		const { count } = req.query;
