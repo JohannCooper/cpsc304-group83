@@ -27,7 +27,7 @@ export async function populateTables() {
 	console.log("Table populated: 'members'");
 
 	await queryDatabase(`
-		INSERT INTO meeting ( date, location, purpose, organizer )
+		INSERT INTO meetings ( date, location, purpose, organizer )
 		VALUES
 			( '2020-11-07 19:00:00', 'VOC Office', 'First meeting for hut skiing', '2' ),
 			( '2020-11-13 19:00:00', 'VOC Office', 'Second meeting for hut skiing', '2' ),
@@ -43,7 +43,7 @@ export async function populateTables() {
 			( '2020-05-03 19:00:00', 'VOC Office', 'How to rent equipment for dummies', '2' );	
 	`);
 
-	console.log("Table populated: 'meeting'");
+	console.log("Table populated: 'meetings'");
 
 	await queryDatabase(`
 		INSERT INTO leads
