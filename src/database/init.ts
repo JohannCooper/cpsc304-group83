@@ -63,7 +63,7 @@ export async function createTables() {
 		CREATE TABLE trips (
 			trip_id          INT PRIMARY KEY auto_increment,
 			name             VARCHAR(100) NOT NULL,
-			start_date		 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+			start_date		 	 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			end_date         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			difficulty       ENUM('BEGINNER', 'INTERMEDIATE', 'DIFFICULT') NOT NULL,
 			type             VARCHAR(100) NOT NULL,
