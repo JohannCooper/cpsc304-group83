@@ -8,11 +8,11 @@ export async function populateTables() {
 			( '2', 'Backcountry camping', '2020-12-20 19:00:00', '2020-12-26 19:00:00', 'DIFFICULT', 'CAMPING', '8'),
 			( '3', 'Son of the rock', '2021-05-15 19:00:00', '2021-05-16 19:00:00', 'INTERMEDIATE', 'CLIMBING', '50' ),
 			( '4', 'Skiing to a hut', '2020-11-20 19:00:00', '2020-11-20 19:00:00', 'INTERMEDIATE', 'CROSS COUNTRY SKIING', '15' ),
-			( '5', 'The Chief', '2020-08-11 19:00:00', '2020-08-12 04:00:00', 'BEGINNER', 'HIKING', '10' );
+			( '5', 'The Chief', '2020-08-11 19:00:00', '2020-08-12 04:00:00', 'BEGINNER', 'HIKING', '10' ),
 
-			( '6', 'Intro to Backcountry Skking', '2020-11-28 19:00:00', '2020-11-29 04:00:00', 'BEGINNER', 'BACKCOUNTRY SKIING', '10' );
-			( '7', 'Snowshoeing to Brew', '2020-11-28 19:00:00', '2020-11-29 04:00:00', 'BEGINNER', 'SNOWSHOEING', '15' );
-			( '8', 'Let's Workout Together!', '2020-11-26 19:00:00', '2020-11-26 20:00:00', 'BEGINNER', 'WORKOUT', '20' );
+			( '6', 'Intro to Backcountry Skiing', '2020-11-28 19:00:00', '2020-11-29 04:00:00', 'BEGINNER', 'BACKCOUNTRY SKIING', '10' ),
+			( '7', 'Snowshoeing to Brew', '2020-11-28 19:00:00', '2020-11-29 04:00:00', 'BEGINNER', 'SNOWSHOEING', '15' ),
+			( '8', 'Workout Together!', '2020-11-26 19:00:00', '2020-11-26 20:00:00', 'BEGINNER', 'WORKOUT', '20' );
 
 	`);
 
