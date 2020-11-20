@@ -26,7 +26,7 @@ export async function createTables() {
 	console.log("Table created: 'members'");
 
 	await queryDatabase(`
-		CREATE TABLE meeting (	
+		CREATE TABLE meetings (	
 			date      TIMESTAMP NOT NULL,
 			location  VARCHAR(100) NOT NULL,
 			purpose   VARCHAR(250) NOT NULL,
@@ -35,13 +35,13 @@ export async function createTables() {
 		);
 	`);
 
-	console.log("Table created: 'meeting'");
+	console.log("Table created: 'meetings'");
 	
 	await queryDatabase(`
 		CREATE TABLE holds_trip_meeting (	
 			trip_id   INT NOT NULL REFERENCES trips(trip_id),
-			date      TIMESTAMP NOT NULL REFERENCES meeting(date),
-			organizer INT NOT NULL REFERENCES meeting(organizer),
+			date      TIMESTAMP NOT NULL REFERENCES meetings(date),
+			organizer INT NOT NULL REFERENCES meetings(organizer),
 			PRIMARY KEY(trip_id, date, organizer)
 		);
 	`);
@@ -51,8 +51,8 @@ export async function createTables() {
 	await queryDatabase(`
 		CREATE TABLE attends_meeting (	
 			member_id INT NOT NULL REFERENCES members(member_id),
-			date      TIMESTAMP NOT NULL REFERENCES meeting(date),
-			organizer INT NOT NULL REFERENCES meeting(organizer),
+			date      TIMESTAMP NOT NULL REFERENCES meetings(date),
+			organizer INT NOT NULL REFERENCES meetings(organizer),
 			PRIMARY KEY(member_id, date, organizer)
 		);
 	`);
