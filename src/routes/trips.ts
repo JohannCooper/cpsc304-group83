@@ -17,6 +17,28 @@ router.get('/', async (req: Request, res: Response) => {
 	}
 });
 
+router.get('/:tripId/meeting', async (req: Request, res: Response) => {
+	try {
+		const { tripId: id } = req.params;
+
+		const results = await queryDatabase(`
+			SELECT m.date, 
+						 m.location,
+						 m.purpose
+			FROM   holds_trip_meeting htm, meetings m
+			WHERE  htm.trip_id = '${id}' 
+			AND    htm.date = m.date 
+			AND    htm.organizer = m.organizer;
+		`);
+
+		res.json({ data: results });
+	} catch (err) {
+		res.status(400);
+		res.json({ error: err });
+	}
+});
+
+
 router.get('/attendance', async (req: Request, res: Response) => {
 	try {
 		const { count } = req.query;
@@ -39,17 +61,16 @@ router.get('/attendance', async (req: Request, res: Response) => {
 	}
 });
 
-
-router.delete('/:tripId', async (req: Request, res: Response) => {
+router.get('/thisWeek', async (req: Request, res: Response) => {
 	try {
-		const { tripId } = req.params;
-
-		await queryDatabase(`
-			DELETE FROM trips
-			WHERE trip_id = '${tripId}';
+    const results = await queryDatabase(`
+      SELECT COUNT(*) AS count
+      FROM   trips
+			WHERE  start_date >= '2020-11-23'
+			AND    start_date <= '2020-11-29';
 		`);
 
-		res.sendStatus(200);
+		res.json({ data: results });
 	} catch (err) {
 		res.status(400);
 		res.json({ error: err });
@@ -88,6 +109,23 @@ router.get('/participants', async (req: Request, res: Response) => {
 		`);
 
 		res.json({ data: results });
+	} catch (err) {
+		res.status(400);
+		res.json({ error: err });
+	}
+});
+
+
+router.delete('/:tripId', async (req: Request, res: Response) => {
+	try {
+		const { tripId } = req.params;
+
+		await queryDatabase(`
+			DELETE FROM trips
+			WHERE trip_id = '${tripId}';
+		`);
+
+		res.sendStatus(200);
 	} catch (err) {
 		res.status(400);
 		res.json({ error: err });
