@@ -266,10 +266,10 @@ export async function createTables() {
 
 	await queryDatabase(`
 		CREATE TABLE pays_membership (
-			start_date	TIMESTAMP,
+			start_date	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			member_id	INT REFERENCES member ON DELETE CASCADE,
 			price		INTEGER,
-			end_date	TIMESTAMP,
+			end_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			PRIMARY KEY (member_id, start_date)
 		);
 	`);
