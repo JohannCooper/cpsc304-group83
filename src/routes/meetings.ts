@@ -46,16 +46,16 @@ router.get('/:date/:organizer/mostExperienced', async (req: Request, res: Respon
 		date = moment(date).format('YYYY-MM-DD HH:mm:ss');
 
 		const results = await queryDatabase(`
-			SELECT Temp.full_name
+			SELECT Temp.full_name, Temp.tripCount
 			FROM (SELECT m.full_name, COUNT(*) as tripCount
-				  FROM member m, attends_trip at1
+				  FROM members m, attends_trip at1
 				  WHERE m.member_id = at1.member_id
-				  AND   m.member_ID IN (SELECT am.member_id
+				  AND   m.member_id IN (SELECT am.member_id
 				  						FROM attends_meeting am
 				  						WHERE am.date = '${date}'
 				  						AND   am.organizer = '${organizer}')
-				  GROUP BY m.member_id) AS Temp
-			WHERE Temp.tripCount = (SELECT MAX(Temp.tripCount) FROM Temp;
+				  GROUP BY m.full_name) AS Temp
+			WHERE Temp.tripCount = (SELECT MAX(Temp.tripCount) from Temp);
 		`);
 
 		res.json({ data: results });
