@@ -1,4 +1,3 @@
-import { query } from 'express';
 import { queryDatabase } from '.';
 
 export async function createTables() {
