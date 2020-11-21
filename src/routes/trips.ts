@@ -64,13 +64,14 @@ router.get('/attendance', async (req: Request, res: Response) => {
 router.get('/thisWeek', async (req: Request, res: Response) => {
 	try {
     const results = await queryDatabase(`
-      SELECT COUNT(*) AS count
-      FROM   trips
-			WHERE  start_date >= '2020-11-23'
-			AND    start_date <= '2020-11-29';
-		`);
+	  SELECT SUM(Temp.count) as count
+	  FROM (SELECT COUNT(*) AS count
+      		FROM   trips
+      		GROUP BY start_date
+      		HAVING   start_date >= '2020-11-23' AND start_date <= '2020-11-29') as Temp;
+      `);
 
-		res.json({ data: results });
+    res.json({ data: results });
 	} catch (err) {
 		res.status(400);
 		res.json({ error: err });
