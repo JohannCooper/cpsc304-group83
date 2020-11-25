@@ -26,12 +26,28 @@ export async function createTables() {
 	console.log("Table created: 'members'");
 
 	await queryDatabase(`
+		CREATE TABLE trips (
+			trip_id          INT PRIMARY KEY auto_increment,
+			name             VARCHAR(100) NOT NULL,
+			start_date		 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+			end_date         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+			difficulty       ENUM('BEGINNER', 'INTERMEDIATE', 'DIFFICULT') NOT NULL,
+			type             VARCHAR(100) NOT NULL,
+			max_participants INTEGER NOT NULL
+		);	
+	`);
+
+	console.log("Table created: 'trips'");
+
+	await queryDatabase(`
 		CREATE TABLE meetings (	
 			date      TIMESTAMP NOT NULL,
 			location  VARCHAR(100) NOT NULL,
 			purpose   VARCHAR(250) NOT NULL,
 			organizer INT NOT NULL REFERENCES members(member_id),
-			PRIMARY KEY(date, organizer)
+			trip_id	  INT,
+			PRIMARY KEY(date, organizer),
+			FOREIGN KEY (trip_id) REFERENCES trips(trip_id) ON DELETE CASCADE
 		);
 	`);
 
@@ -58,20 +74,6 @@ export async function createTables() {
 	`);
 
 	console.log("Table created: 'attends_meeting'");
-
-	await queryDatabase(`
-		CREATE TABLE trips (
-			trip_id          INT PRIMARY KEY auto_increment,
-			name             VARCHAR(100) NOT NULL,
-			start_date		 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-			end_date         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-			difficulty       ENUM('BEGINNER', 'INTERMEDIATE', 'DIFFICULT') NOT NULL,
-			type             VARCHAR(100) NOT NULL,
-			max_participants INTEGER NOT NULL
-		);	
-	`);
-
-	console.log("Table created: 'trips'");
 
 
 	await queryDatabase(`

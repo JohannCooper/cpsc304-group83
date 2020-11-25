@@ -32,18 +32,18 @@ export async function populateTables() {
 	console.log("Table populated: 'members'");
 
 	await queryDatabase(`
-		INSERT INTO meetings ( date, location, purpose, organizer )
+		INSERT INTO meetings ( date, location, purpose, organizer, trip_id )
 		VALUES
-			( '2020-11-07 19:00:00', 'VOC Office', 'First meeting for hut skiing', '2' ),
-			( '2020-11-13 19:00:00', 'VOC Office', 'Second meeting for hut skiing', '2' ),
-			( '2020-11-17 19:00:00', 'VOC Office', 'Third meeting for hut skiing', '2' ),
+			( '2020-11-07 19:00:00', 'VOC Office', 'First meeting for hut skiing', '2', '4' ),
+			( '2020-11-13 19:00:00', 'VOC Office', 'Second meeting for hut skiing', '2', '4' ),
+			( '2020-11-17 19:00:00', 'VOC Office', 'Third meeting for hut skiing', '2', '4' ),
 
-			( '2020-08-09 17:00:00', 'Life Building Starbucks', 'Planning out Chief ascent', '3' ),
+			( '2020-08-09 17:00:00', 'Life Building Starbucks', 'Planning out Chief ascent', '3', '5' ),
 
-			( '2021-05-10 18:30:00', 'EOSC 2011', 'Son of Rock Meeting!', '4' ),
+			( '2021-05-10 18:30:00', 'EOSC 2011', 'Son of Rock Meeting!', '4', '3' ),
 
-			( '2020-09-21 19:00:00', 'Blue Chip', 'Planning our trip to Mount Fromme', '3' ),
-			( '2020-05-03 19:00:00', 'VOC Office', 'How to rent equipment for dummies', '2' );	
+			( '2020-09-21 19:00:00', 'Blue Chip', 'Planning our trip to Mount Fromme', '3', NULL ),
+			( '2020-05-03 19:00:00', 'VOC Office', 'How to rent equipment for dummies', '2', NULL );	
 	`);
 
 	console.log("Table populated: 'meetings'");
